@@ -1,0 +1,19 @@
+{
+  "name": "VIP na Chapada",
+  "short_name": "VIP Chapada",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0a3627",
+  "background_color": "#0a3627",
+  "display": "standalone"
+}

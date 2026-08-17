@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+@import "tailwindcss";
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Increase line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+.hero-background {
+  background-image: var(--hero-desktop-image);
+}
+
+@media (max-width: 639px) {
+  .hero-background {
+    background-image: var(--hero-mobile-image);
+  }
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+:root {
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Open Sans", sans-serif;
+
+  --bg: #E8D6BE;
+  --bg-soft: #D7BE9E;
+  --surface: #F3E4CF;
+  --surface-2: #E4CCAD;
+  --header-bg:  #dbc4a6;
+  --logo-filter: brightness(0) saturate(100%) invert(29%) sepia(14%) saturate(816%) hue-rotate(48deg) brightness(92%) contrast(89%);
+
+  --text: #211408;
+  --text-soft: #49311C;
+  --text-muted: #765D47;
+
+  --primary: #45563A;
+  --primary-soft: #61704E;
+  --primary-dark: #2B3827;
+
+  --accent: #98633F;
+  --accent-soft: #C58B61;
+
+  --border: #BFA78B;
+  --border-soft: #CFB99E;
+
+  --shadow: rgba(72, 43, 18, 0.22);
+}
+
+[data-theme="dark"] {
+  --bg: #11130F;
+  --bg-soft: #191D16;
+  --surface: #1F241C;
+  --surface-2: #293025;
+  --header-bg: #11130F;
+  --logo-filter: none;
+
+  --text: #F7F1E8;
+  --text-soft: #D8CBBE;
+  --text-muted: #A99D90;
+
+  --primary: #879374;
+  --primary-soft: #A8B394;
+  --primary-dark: #5F6A51;
+
+  --accent: #C69B76;
+  --accent-soft: #E2B98F;
+
+  --border: #3C4436;
+  --border-soft: #30372C;
+
+  --shadow: rgba(0, 0, 0, 0.45);
+}
+
+@theme inline {
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-header-bg: var(--header-bg);
+
+  --color-text: var(--text);
+  --color-text-soft: var(--text-soft);
+  --color-text-muted: var(--text-muted);
+
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-dark: var(--primary-dark);
+
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-border: var(--border);
+  --color-border-soft: var(--border-soft);
+}
