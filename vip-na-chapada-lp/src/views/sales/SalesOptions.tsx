@@ -20,6 +20,21 @@ import vipNoApGymImage from '../../assets/casas_aluguel/vip_no_ap/IMG_0176.webp'
 import vipNoApMarketImage from '../../assets/casas_aluguel/vip_no_ap/IMG_7719.webp'
 import vipNoApBedroomImage from '../../assets/casas_aluguel/vip_no_ap/IMG_6326.webp'
 import vipNoApBuildingImage from '../../assets/casas_aluguel/vip_no_ap/IMG_7708.webp'
+import ap2DroneImage from '../../assets/casas_venda/ap_2/DJI_0308.webp'
+import ap2LivingImage from '../../assets/casas_venda/ap_2/IMG_8820.webp'
+import ap2LivingAngleImage from '../../assets/casas_venda/ap_2/IMG_8821.webp'
+import ap2DiningImage from '../../assets/casas_venda/ap_2/IMG_8822.webp'
+import ap2KitchenImage from '../../assets/casas_venda/ap_2/IMG_8825.webp'
+import ap2KitchenWideImage from '../../assets/casas_venda/ap_2/IMG_8826.webp'
+import ap2KitchenAngleImage from '../../assets/casas_venda/ap_2/IMG_8827.webp'
+import ap2BathroomImage from '../../assets/casas_venda/ap_2/IMG_8833.webp'
+import ap2BedroomImage from '../../assets/casas_venda/ap_2/IMG_8843.webp'
+import ap2BedroomViewImage from '../../assets/casas_venda/ap_2/IMG_8844.webp'
+import ap2BathroomDetailImage from '../../assets/casas_venda/ap_2/IMG_8849.webp'
+import ap2SuiteImage from '../../assets/casas_venda/ap_2/IMG_8856.webp'
+import ap2HallImage from '../../assets/casas_venda/ap_2/IMG_8865.webp'
+import ap2EntryImage from '../../assets/casas_venda/ap_2/IMG_8867.webp'
+import ap2ServiceAreaImage from '../../assets/casas_venda/ap_2/IMG_8873.webp'
 
 type SalesHouse = {
   id: string
@@ -37,6 +52,37 @@ type SalesHouse = {
 }
 
 const salesHouses: SalesHouse[] = [
+  {
+    id: 'apartamento-decorado',
+    tag: 'Apartamento à venda',
+    name: 'Apartamento decorado',
+    price: 'Valor sob consulta',
+    summary: ['Detalhes sob consulta', 'Ambientes integrados', 'Cozinha planejada'],
+    cover: ap2LivingImage,
+    gallery: [
+      ap2LivingImage,
+      ap2LivingAngleImage,
+      ap2DiningImage,
+      ap2KitchenImage,
+      ap2KitchenWideImage,
+      ap2KitchenAngleImage,
+      ap2BathroomImage,
+      ap2BedroomImage,
+      ap2BedroomViewImage,
+      ap2BathroomDetailImage,
+      ap2SuiteImage,
+      ap2HallImage,
+      ap2EntryImage,
+      ap2ServiceAreaImage,
+      ap2DroneImage,
+    ],
+    description:
+      'Apartamento com ambientes bem distribuídos, marcenaria planejada, cozinha equipada e fotos completas para avaliar cada detalhe antes da visita.',
+    perfectFor: 'Moradia, investimento e visitas agendadas',
+    location: 'Localização sob consulta',
+    checkIn: 'Visitas sob agendamento',
+    rules: 'Detalhes de venda sob consulta',
+  },
   {
     id: 'apartamento-na-asa-norte',
     tag: 'Apartamento à venda',

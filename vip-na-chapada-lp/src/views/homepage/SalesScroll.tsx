@@ -1,6 +1,7 @@
 import { IconArrowRight } from '@tabler/icons-react'
 import { Link } from 'react-router'
 import vipNoApImage from '../../assets/casas_aluguel/vip_no_ap/IMG_6326.webp'
+import ap2LivingImage from '../../assets/casas_venda/ap_2/IMG_8820.webp'
 
 type HouseForSale = {
   detail: string
@@ -11,6 +12,13 @@ type HouseForSale = {
 }
 
 const housesForSale: HouseForSale[] = [
+  {
+    detail: 'Apartamento à venda',
+    housePicture: ap2LivingImage,
+    houseName: 'Apartamento decorado',
+    houseInfo: ['Ambientes integrados', 'Cozinha planejada', 'Visitas agendadas'],
+    viewLink: '/vendas#apartamento-decorado',
+  },
   {
     detail: 'Apartamento à venda',
     housePicture: vipNoApImage,
