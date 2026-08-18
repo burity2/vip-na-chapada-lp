@@ -11,7 +11,7 @@ import {
 import type { CSSProperties } from 'react'
 import { Link } from "react-router"
 import heroBackgroundImage from '../../assets/hero-home-dark-left.webp'
-import heroMobileBackgroundImage from '../../assets/hero-home-mobile-dark-left.webp'
+import heroMobileBackgroundImage from '../../assets/hero-home-mobile-bottom-text.webp'
 
 type AboutCard = {
   icon: TablerIcon;
@@ -48,20 +48,20 @@ const AboutHousingInfo: AboutCard[] = [
 ]
 
 export default function Hero() {
-  const primaryButtonClassName = 'inline-flex min-h-15 w-[15rem] items-center justify-center gap-3 rounded-lg bg-[#d9c8aa] px-4 py-4 font-bold text-[#1f160d] shadow-xl shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-1 hover:bg-primary hover:text-bg  focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
-  const secondaryButtonClassName = 'inline-flex min-h-15 w-[15rem] items-center justify-center gap-3 rounded-lg bg-[#d9c8aa] px-4 py-4 font-bold text-[#1f160d] shadow-xl shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-1 hover:bg-primary hover:text-bg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+  const primaryButtonClassName = 'inline-flex min-h-15 w-[15rem] items-center justify-center gap-3 rounded-lg bg-bg-soft px-4 py-4 font-bold text-text shadow-xl shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-1 hover:bg-accent hover:text-bg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+  const secondaryButtonClassName = 'inline-flex min-h-15 w-[15rem] items-center justify-center gap-3 rounded-lg bg-bg-soft px-4 py-4 font-bold text-text shadow-xl shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-1 hover:bg-accent hover:text-bg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
 
   return (
     <>
     <div
-      className="hero-background flex min-h-[34rem] flex-col justify-center bg-bg-soft bg-cover bg-center px-6 py-12 text-[#f7ead5] sm:h-[28rem] sm:min-h-0 sm:px-12 sm:py-10 lg:px-18 2xl:h-[34rem]"
+      className="hero-background flex min-h-[42rem] flex-col justify-end bg-bg-soft bg-cover bg-top px-6 pb-10 pt-80 text-[#f7ead5] sm:h-[28rem] sm:min-h-0 sm:justify-center sm:bg-center sm:px-12 sm:py-10 lg:px-18 2xl:h-[34rem]"
       style={{
         '--hero-desktop-image': `url(${heroBackgroundImage})`,
         '--hero-mobile-image': `url(${heroMobileBackgroundImage})`,
       } as CSSProperties}
     >
       <div className="flex max-w-xl flex-col gap-8">
-          <h1 className="font-heading text-[2.45rem] font-bold leading-[1.05] text-[#fff3df] sm:text-[2.7rem] 2xl:text-[3.25rem]">
+          <h1 className="font-heading text-[2.35rem] font-bold leading-[1.05] text-[#fff3df] sm:text-[2.7rem] 2xl:text-[3.25rem]">
             Um texto maior ainda, bem grande!
           </h1>
           <p className="max-w-md font-semibold leading-7 text-[#f7ead5]">
@@ -76,7 +76,7 @@ export default function Hero() {
           </Link>
           <Link className={secondaryButtonClassName} to="/aluguel">
             <IconKey aria-hidden="true" size={24} stroke={1.8} />
-            Alugar
+            Reservar
           </Link>
       </div>
     </div>

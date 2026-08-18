@@ -20,6 +20,10 @@ import vipNaChapadaLivingImage from '../../assets/casas_aluguel/vip_na_chapada/I
 import vipNaChapadaHotTubImage from '../../assets/casas_aluguel/vip_na_chapada/IMG_2707.webp'
 import vipNaChapadaViewImage from '../../assets/casas_aluguel/vip_na_chapada/IMG_4483.webp'
 import vipNaChapadaFacadeImage from '../../assets/casas_aluguel/vip_na_chapada/IMG_7357.webp'
+import vipNaChapadaNewImage1 from '../../assets/casas_aluguel/vip_na_chapada/chapadaNova1.webp'
+import vipNaChapadaNewImage2 from '../../assets/casas_aluguel/vip_na_chapada/chapadaNova2.webp'
+import vipNaChapadaNewImage3 from '../../assets/casas_aluguel/vip_na_chapada/chapadaNova3.webp'
+import vipNaChapadaNewImage4 from '../../assets/casas_aluguel/vip_na_chapada/chapadaNova4.webp'
 import vipNoApEntranceImage from '../../assets/casas_aluguel/vip_no_ap/IMG_6319.webp'
 import vipNoApBathroomImage from '../../assets/casas_aluguel/vip_no_ap/IMG_6107.webp'
 import vipNoApGymImage from '../../assets/casas_aluguel/vip_no_ap/IMG_0176.webp'
@@ -59,6 +63,10 @@ const rentHouses: RentHouse[] = [
       vipNaChapadaHotTubImage,
       vipNaChapadaViewImage,
       vipNaChapadaFacadeImage,
+      vipNaChapadaNewImage1,
+      vipNaChapadaNewImage2,
+      vipNaChapadaNewImage3,
+      vipNaChapadaNewImage4,
     ],
     description:
       'Uma estadia com arquitetura acolhedora, varanda aberta para a paisagem e espaços preparados para descansar depois dos passeios pela Chapada.',

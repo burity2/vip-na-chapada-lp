@@ -15,16 +15,16 @@ export default function SalesCTA() {
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6">
         <div className="flex flex-col gap-3">
           <h2 className="mt-3 font-heading text-4xl font-bold text-[#fff3df]">
-            Prefere alugar?
+            Prefere reservar?
           </h2>
           <p className="text-base font-semibold text-[#f7ead5] sm:text-lg">
-            Veja nossas opções de aluguel ou fale comigo!
+            Veja nossas opções de reserva ou fale comigo!
           </p>
         </div>
         <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
           <Link className={primaryButtonClassName} to="/aluguel">
             <IconKey aria-hidden="true" size={22} stroke={1.8} />
-            Alugar
+            Reservar
             <IconArrowRight aria-hidden="true" size={18} stroke={1.8} />
           </Link>
           <Link className={secondaryButtonClassName} to="/contato">

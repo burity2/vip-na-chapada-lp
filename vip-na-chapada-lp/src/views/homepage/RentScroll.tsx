@@ -66,7 +66,7 @@ export default function Rent() {
     <section id="aluguel" className="flex flex-col gap-8 px-4 pt-12 pb-12 sm:px-12 lg:px-18">
       <div className="flex items-end justify-between gap-6">
         <div className="max-w-xl">
-          <h2 className="font-heading text-3xl font-bold text-text sm:text-4xl">Imóveis para alugar</h2>
+          <h2 className="font-heading text-3xl font-bold text-text sm:text-4xl">Imóveis para reservar</h2>
         </div>
         <Link
           className="hidden items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:inline-flex"

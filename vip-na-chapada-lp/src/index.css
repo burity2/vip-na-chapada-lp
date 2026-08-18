@@ -76,28 +76,28 @@ h1, h2, h3, h4, h5, h6 {
   --font-heading: "Playfair Display", serif;
   --font-body: "Open Sans", sans-serif;
 
-  --bg: #E8D6BE;
-  --bg-soft: #D7BE9E;
-  --surface: #F3E4CF;
-  --surface-2: #E4CCAD;
-  --header-bg:  #dbc4a6;
+  --bg: #F0F0E0;
+  --bg-soft: #E0D8D0;
+  --surface: #F7F4EA;
+  --surface-2: #E9E1D7;
+  --header-bg: #E0D8D0;
   --logo-filter: brightness(0) saturate(100%) invert(29%) sepia(14%) saturate(816%) hue-rotate(48deg) brightness(92%) contrast(89%);
 
-  --text: #211408;
-  --text-soft: #49311C;
-  --text-muted: #765D47;
+  --text: #281810;
+  --text-soft: #503A2D;
+  --text-muted: #807870;
 
-  --primary: #45563A;
-  --primary-soft: #61704E;
-  --primary-dark: #2B3827;
+  --primary: #405830;
+  --primary-soft: #909868;
+  --primary-dark: #304020;
 
-  --accent: #98633F;
-  --accent-soft: #C58B61;
+  --accent: #C08060;
+  --accent-soft: #D6A27F;
 
-  --border: #BFA78B;
-  --border-soft: #CFB99E;
+  --border: #C8C0B8;
+  --border-soft: #DCD4CC;
 
-  --shadow: rgba(72, 43, 18, 0.22);
+  --shadow: rgba(40, 24, 16, 0.18);
 }
 
 [data-theme="dark"] {

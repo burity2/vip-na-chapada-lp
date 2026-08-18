@@ -1,11 +1,11 @@
 import type { CSSProperties } from 'react'
 import salesHeroBackgroundImage from '../../assets/sales-hero-apartment-dark-left.webp'
-import salesHeroMobileBackgroundImage from '../../assets/sales-hero-apartment-mobile-dark-left.webp'
+import salesHeroMobileBackgroundImage from '../../assets/sales-hero-apartment-mobile-bottom-text.webp'
 
 export default function SalesHero() {
   return (
     <section
-      className="hero-background flex min-h-[34rem] items-center bg-bg-soft bg-cover bg-center px-6 py-12 text-[#f7ead5] sm:min-h-[24rem] sm:px-12 sm:py-16 lg:px-18"
+      className="hero-background flex min-h-[42rem] items-end bg-bg-soft bg-cover bg-top px-6 pb-12 pt-80 text-[#f7ead5] sm:min-h-[24rem] sm:items-center sm:bg-center sm:px-12 sm:py-16 lg:px-18"
       style={{
         '--hero-desktop-image': `url(${salesHeroBackgroundImage})`,
         '--hero-mobile-image': `url(${salesHeroMobileBackgroundImage})`,

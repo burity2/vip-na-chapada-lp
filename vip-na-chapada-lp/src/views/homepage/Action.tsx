@@ -29,7 +29,7 @@ export default function Action() {
           </Link>
           <Link className={secondaryButtonClassName} to="/aluguel">
             <IconKey aria-hidden="true" size={22} stroke={1.8} />
-            Alugar
+            Reservar
             <IconArrowRight aria-hidden="true" size={18} stroke={1.8} />
           </Link>
         </div>
