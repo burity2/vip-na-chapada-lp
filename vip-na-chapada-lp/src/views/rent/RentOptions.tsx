@@ -150,9 +150,8 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
     }
 
     window.setTimeout(() => {
-      cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      window.scrollBy({ behavior: 'smooth', top: 92 })
-    }, 80)
+      window.scrollBy({ behavior: 'smooth', top: 202 })
+    }, 280)
   }, [isExpanded])
 
   function showPreviousImage() {
@@ -277,21 +276,21 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
               <p className="text-sm font-semibold leading-6 text-text">{house.description}</p>
             </div>
 
-            <div className="grid gap-3 rounded-lg border border-border-soft bg-surface-2 p-4 text-sm font-semibold text-text">
-              <span className="inline-flex items-start gap-3">
-                <IconMapPin aria-hidden="true" className="mt-0.5 text-primary" size={20} stroke={1.8} />
+            <div className="grid gap-6 rounded-lg border border-border-soft bg-surface-2 p-2 text-sm font-semibold text-text sm:p-4">
+              <span className="inline-flex items-center gap-3">
+                <IconMapPin aria-hidden="true" className="mt-0.5 shrink-0 text-primary" size={20} stroke={1.8} />
                 {house.location}
               </span>
-              <span className="inline-flex items-start gap-3">
-                <IconCalendar aria-hidden="true" className="mt-0.5 text-primary" size={20} stroke={1.8} />
+              <span className="inline-flex items-center gap-3">
+                <IconCalendar aria-hidden="true" className="mt-0.5 shrink-0 text-primary" size={20} stroke={1.8} />
                 {house.checkIn}
               </span>
-              <span className="inline-flex items-start gap-3">
-                <IconShieldCheck aria-hidden="true" className="mt-0.5 text-primary" size={20} stroke={1.8} />
+              <span className="inline-flex items-center gap-3">
+                <IconShieldCheck aria-hidden="true" className="mt-0.5 shrink-0 text-primary" size={20} stroke={1.8} />
                 {house.rules}
               </span>
-              <span className="inline-flex items-start gap-3">
-                <IconClock aria-hidden="true" className="mt-0.5 text-primary" size={20} stroke={1.8} />
+              <span className="inline-flex items-center gap-3">
+                <IconClock aria-hidden="true" className="mt-0.5 shrink-0 text-primary" size={20} stroke={1.8} />
                 {house.perfectFor}
               </span>
             </div>

@@ -131,20 +131,20 @@ export default function RentEvents() {
           <div className="grid gap-4">
             {events.map(({ date, duration, description, house, name, time }) => (
               <article
-                className="grid gap-4 rounded-lg border border-border-soft bg-surface-2 p-4 md:grid-cols-[9rem_1fr]"
+                className="grid justify-items-center gap-4 rounded-lg border border-border-soft bg-surface-2 p-4 text-center md:grid-cols-[9rem_1fr] md:justify-items-stretch md:text-left"
                 key={`${date}-${time}-${name}`}
               >
-                <div className="flex flex-col gap-2 justify-center rounded-md bg-bg-soft p-4 text-center text-text-soft">
+                <div className="flex w-full max-w-[12.5rem] flex-col justify-center gap-2 rounded-md bg-bg-soft p-4 text-center text-text-soft md:max-w-none">
                   <span className="text-2xl font-bold">{date}</span>
                   <span className="font-bold text-2xl">{time}</span>
                 </div>
-                <div className="grid gap-3">
-                  <div className="flex flex-col gap-1">
+                <div className="grid justify-items-center gap-3 md:justify-items-start">
+                  <div className="flex flex-col items-center gap-1 md:items-start">
                     <span className="text-xs font-bold uppercase tracking-wide text-primary">Casa {house}</span>
                     <h3 className="font-heading text-2xl font-bold text-text">{name}</h3>
                     <p className="text-sm font-semibold text-text">Duração: {formatEventDuration(duration)}</p>
                   </div>
-                  <div className="grid gap-2 text-sm font-semibold leading-6 text-text sm:grid-cols-2">
+                  <div className="grid gap-2 text-sm font-semibold leading-6 text-text sm:grid-cols-2 md:text-left">
                     <p>
                     {description}
                     </p>
