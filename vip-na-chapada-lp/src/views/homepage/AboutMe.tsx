@@ -30,7 +30,7 @@ export default function About() {
             </p>
           </div>
           <Link
-            className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary px-8 text-sm font-bold text-bg shadow-lg shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:w-fit"
+            className='inline-flex min-h-15 w-[15rem] items-center justify-center gap-3 rounded-lg bg-bg-soft px-4 py-4 font-bold text-text shadow-xl shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-1 hover:bg-primary border border-2 hover:border-primary hover:text-bg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
             to="/contato"
           >
             <IconPhone aria-hidden="true" size={18} stroke={1.8} />

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   IconBath,
   IconBed,
@@ -9,8 +9,10 @@ import {
   IconChevronLeft,
   IconChevronRight,
   IconClock,
+  IconMaximize,
   IconMapPin,
   IconShieldCheck,
+  IconX,
   IconUsers,
 } from '@tabler/icons-react'
 import { useLocation } from 'react-router'
@@ -107,9 +109,51 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
   isExpanded: boolean
   onToggle: () => void
 }) {
+  const cardRef = useRef<HTMLElement>(null)
+  const hasMountedRef = useRef(false)
   const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const activeImage = house.gallery[activeImageIndex] ?? house.gallery[0]
-  const previewImages = house.gallery.slice(0, 4)
+
+  useEffect(() => {
+    if (!isLightboxOpen) {
+      return
+    }
+
+    const previousBodyOverflow = document.body.style.overflow
+    const previousDocumentOverflow = document.documentElement.style.overflow
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setIsLightboxOpen(false)
+      }
+    }
+
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousBodyOverflow
+      document.documentElement.style.overflow = previousDocumentOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isLightboxOpen])
+
+  useEffect(() => {
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true
+      return
+    }
+
+    if (!isExpanded || window.innerWidth >= 768) {
+      return
+    }
+
+    window.setTimeout(() => {
+      cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      window.scrollBy({ behavior: 'smooth', top: 92 })
+    }, 80)
+  }, [isExpanded])
 
   function showPreviousImage() {
     setActiveImageIndex((currentIndex) => (
@@ -127,6 +171,7 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
     <article
       className="overflow-hidden rounded-lg border border-border bg-surface shadow-sm shadow-[var(--shadow)] transition-shadow duration-300 hover:shadow-lg hover:shadow-[var(--shadow)]"
       id={house.id}
+      ref={cardRef}
     >
       <button
         aria-expanded={isExpanded}
@@ -167,9 +212,9 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
       </button>
 
       {isExpanded && (
-        <div className="grid gap-8 border-t border-border-soft p-4 md:grid-cols-[1.6fr_1fr] md:p-6">
-          <div className="grid gap-4 lg:grid-cols-2">
-            <div className="group/gallery relative aspect-square overflow-hidden rounded-lg bg-bg-soft">
+        <div className="grid gap-5 border-t border-border-soft p-3 sm:p-4 md:grid-cols-[1.6fr_1fr] md:gap-8 md:p-6">
+          <div className="grid gap-4">
+            <div className="group/gallery relative aspect-[4/3] overflow-hidden rounded-lg bg-bg-soft sm:aspect-[16/11] md:aspect-[4/3]">
               <img
                 alt={`${house.name} - foto ${activeImageIndex + 1}`}
                 className="h-full w-full object-cover"
@@ -177,21 +222,30 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
               />
               <button
                 aria-label="Imagem anterior"
-                className="absolute left-3 top-1/2 z-20 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-surface/85 text-primary opacity-0 shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent group-hover/gallery:opacity-100 group-focus-within/gallery:opacity-100"
+                className="absolute left-2 top-1/2 z-20 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-surface/85 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:left-3 sm:size-10 md:opacity-25 md:focus-visible:opacity-100 md:group-hover/gallery:opacity-100 md:group-focus-within/gallery:opacity-100"
                 onClick={showPreviousImage}
                 type="button"
               >
-                <IconChevronLeft aria-hidden="true" size={22} stroke={1.8} />
+                <IconChevronLeft aria-hidden="true" className="size-5 sm:size-[22px]" stroke={1.8} />
               </button>
               <button
                 aria-label="Próxima imagem"
-                className="absolute right-3 top-1/2 z-20 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-surface/85 text-primary opacity-0 shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent group-hover/gallery:opacity-100 group-focus-within/gallery:opacity-100"
+                className="absolute right-2 top-1/2 z-20 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-surface/85 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-3 sm:size-10 md:opacity-25 md:focus-visible:opacity-100 md:group-hover/gallery:opacity-100 md:group-focus-within/gallery:opacity-100"
                 onClick={showNextImage}
                 type="button"
               >
-                <IconChevronRight aria-hidden="true" size={22} stroke={1.8} />
+                <IconChevronRight aria-hidden="true" className="size-5 sm:size-[22px]" stroke={1.8} />
               </button>
-              <div className="absolute inset-x-0 bottom-0 z-10 bg-black/70 p-3 opacity-0 shadow-[0_-16px_32px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-opacity duration-300 group-hover/gallery:opacity-100 group-focus-within/gallery:opacity-100">
+              <button
+                aria-label={`Ampliar fotos de ${house.name}`}
+                className="absolute right-2 top-2 z-20 grid size-8 place-items-center rounded-full bg-surface/85 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-3 sm:top-3 sm:size-10 md:opacity-25 md:focus-visible:opacity-100 md:group-hover/gallery:opacity-100 md:group-focus-within/gallery:opacity-100"
+                onClick={() => setIsLightboxOpen(true)}
+                title="Ampliar fotos"
+                type="button"
+              >
+                <IconMaximize aria-hidden="true" className="size-[18px] sm:size-5" stroke={1.8} />
+              </button>
+              <div className="absolute inset-x-0 bottom-0 z-10 hidden bg-black/70 p-3 shadow-[0_-16px_32px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-opacity duration-300 md:block md:opacity-0 md:group-hover/gallery:opacity-100 md:group-focus-within/gallery:opacity-100">
                 <div className="flex gap-2 overflow-x-auto pb-1">
                   {house.gallery.map((picture, index) => (
                     <button
@@ -214,23 +268,6 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
                   ))}
                 </div>
               </div>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {previewImages.map((picture, index) => (
-                <button
-                  aria-label={`Mostrar foto ${index + 1} de ${house.name}`}
-                  className="grid aspect-square place-items-center overflow-hidden rounded-lg border border-border-soft bg-bg-soft transition-all duration-300 hover:border-primary-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                  key={`${house.id}-preview-${picture}`}
-                  onClick={() => setActiveImageIndex(index)}
-                  type="button"
-                >
-                  <img
-                    alt={`${house.name} - miniatura ${index + 1}`}
-                    className="h-full w-full object-cover"
-                    src={picture}
-                  />
-                </button>
-              ))}
             </div>
           </div>
 
@@ -278,6 +315,79 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
                 Ver no Airbnb
                 <IconBrandAirbnb aria-hidden="true" size={18} stroke={1.8} />
               </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isLightboxOpen && (
+        <div
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex touch-none items-center justify-center overflow-hidden bg-black/90 p-2 backdrop-blur-sm md:p-4"
+          onClick={() => setIsLightboxOpen(false)}
+          onTouchMove={(event) => event.preventDefault()}
+          onWheel={(event) => event.preventDefault()}
+          role="dialog"
+        >
+          <div
+            className="relative flex h-[calc(100dvh-1rem)] w-full max-w-6xl flex-col gap-3 md:h-full md:max-h-[92vh]"
+            onClick={(event) => event.stopPropagation()}
+            onTouchMove={(event) => event.stopPropagation()}
+            onWheel={(event) => event.stopPropagation()}
+          >
+            <button
+              aria-label="Fechar galeria ampliada"
+              className="absolute right-2 top-2 z-30 grid size-9 place-items-center rounded-full bg-surface/90 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-3 sm:top-3 sm:size-11"
+              onClick={() => setIsLightboxOpen(false)}
+              type="button"
+            >
+              <IconX aria-hidden="true" className="size-5 sm:size-[22px]" stroke={1.8} />
+            </button>
+            <div className="group/lightbox relative flex min-h-0 flex-1 items-center justify-center overflow-hidden rounded-lg bg-black">
+              <img
+                alt={`${house.name} - foto ampliada ${activeImageIndex + 1}`}
+                className="max-h-full max-w-full object-contain"
+                src={activeImage}
+              />
+              <button
+                aria-label="Imagem anterior"
+                className="absolute left-2 top-1/2 z-20 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-surface/90 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:left-5 sm:size-11"
+                onClick={showPreviousImage}
+                type="button"
+              >
+                <IconChevronLeft aria-hidden="true" className="size-5 sm:size-6" stroke={1.8} />
+              </button>
+              <button
+                aria-label="Próxima imagem"
+                className="absolute right-2 top-1/2 z-20 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-surface/90 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-5 sm:size-11"
+                onClick={showNextImage}
+                type="button"
+              >
+                <IconChevronRight aria-hidden="true" className="size-5 sm:size-6" stroke={1.8} />
+              </button>
+            </div>
+            <div className="hidden rounded-lg bg-black/70 p-3 backdrop-blur-sm md:block">
+              <div className="flex gap-2 overflow-x-auto pb-1">
+                {house.gallery.map((picture, index) => (
+                  <button
+                    aria-label={`Mostrar foto ${index + 1} de ${house.name}`}
+                    className={`h-16 w-24 shrink-0 overflow-hidden rounded-md border bg-bg-soft transition-all duration-300 hover:border-primary-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+                      index === activeImageIndex
+                        ? 'border-accent opacity-100'
+                        : 'border-white/35 opacity-80 hover:opacity-100'
+                    }`}
+                    key={`${house.id}-lightbox-${picture}`}
+                    onClick={() => setActiveImageIndex(index)}
+                    type="button"
+                  >
+                    <img
+                      alt={`${house.name} - miniatura ${index + 1}`}
+                      className="h-full w-full object-cover"
+                      src={picture}
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

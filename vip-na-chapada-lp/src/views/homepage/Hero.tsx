@@ -62,11 +62,11 @@ export default function Hero() {
     >
       <div className="flex max-w-xl flex-col gap-8">
           <h1 className="font-heading text-[2.35rem] font-bold leading-[1.05] text-[#fff3df] sm:text-[2.7rem] 2xl:text-[3.25rem]">
-            Um texto maior ainda, bem grande!
+            Experimente um novo estilo de vida.
           </h1>
           <p className="max-w-md font-semibold leading-7 text-[#f7ead5]">
-            Aqui eu falo um pouco mais sobre esta página e o que ela
-            oferece, mas de forma resumida, claro!
+            Imóveis com propósito em Brasília e na Chapada, para morar,
+            investir e viver com mais bem-estar.
           </p>
       </div>
       <div className="flex flex-col gap-4 pt-8 sm:flex-row">
