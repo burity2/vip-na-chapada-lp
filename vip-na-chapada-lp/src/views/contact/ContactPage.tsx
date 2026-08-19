@@ -58,15 +58,15 @@ const contactMethods: ContactMethod[] = [
 const hostHighlights = [
   {
     icon: IconHeart,
-    text: 'Apaixonada por hospitalidade',
+    text: 'Imóveis com propósito',
   },
   {
     icon: IconStar,
-    text: '200+ avaliações 5 estrelas',
+    text: 'Assessoria de temporada',
   },
   {
     icon: IconUsers,
-    text: 'Sempre por perto para ajudar',
+    text: 'Experiências e eventos na Chapada',
   },
 ]
 
@@ -132,7 +132,6 @@ export default function ContactPage() {
 
         <aside className="h-fit min-w-0 rounded-lg border border-border-soft bg-bg-soft px-5 py-8 text-center shadow-md shadow-[var(--shadow)] sm:px-8 sm:py-10">
           <div className="flex flex-col items-center gap-7">
-            <h2 className="font-heading text-2xl font-bold text-text">Conheça sua anfitriã</h2>
             <div className="size-44 overflow-hidden rounded-full border-4 border-surface bg-surface-2 shadow-sm shadow-[var(--shadow)]">
               <img
                 alt="Foto da anfitriã Carla"
@@ -140,15 +139,27 @@ export default function ContactPage() {
                 src={profilePicture}
               />
             </div>
-            <div className="flex flex-col items-center gap-4">
-              <p className="font-heading text-3xl italic text-primary">Oi, sou Carla!</p>
+            <div className="flex flex-col items-center text-left sm:text-justify gap-4">
+              <p className="font-heading text-3xl italic text-primary">Olá, sou Carla!</p>
               <p className="text-sm font-semibold leading-6 text-text">
-                Sou apaixonada por hospitalidade e por criar espaços onde cada hóspede possa
-                relaxar, se sentir em casa e aproveitar o melhor da Chapada.
+                Minha história começou no movimento. Como educadora física, passei anos ao lado de
+                pessoas que queriam mudar de vida a partir do corpo — e aprendi ali que bem-estar
+                não é luxo, é decisão diária.
               </p>
               <p className="text-sm font-semibold leading-6 text-text">
-                Estou sempre por perto para ajudar sua estadia ou compra a ser tranquila do começo
-                ao fim.
+                Foi buscando esse mesmo equilíbrio que encontrei a Chapada dos Veadeiros. Cresci em
+                Brasília, senti a aridez do Cerrado na pele, e descobri na Chapada um lugar pra
+                refrescar os dias e as ideias.
+              </p>
+              <p className="text-sm font-semibold leading-6 text-text">
+                Hoje eu junto essas duas experiências: imóveis com propósito, curadoria de casas e
+                apartamentos em Brasília e na Chapada, e assessoria para quem quer transformar um
+                imóvel em renda com Airbnb.
+              </p>
+              <p className="text-sm font-semibold leading-6 text-text">
+                Meu trabalho não é vender metro quadrado. É te ajudar a construir uma vida que faça
+                sentido: com realização pessoal, retorno financeiro e conexão de verdade — com a
+                natureza e com você mesma.
               </p>
               <a
                 className="mx-auto inline-flex w-full max-w-[16rem] items-center justify-center gap-2 rounded-lg border border-border bg-bg px-4 py-2 text-sm font-bold text-primary transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-soft hover:text-primary-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"

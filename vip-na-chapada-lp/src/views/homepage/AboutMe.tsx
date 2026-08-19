@@ -18,11 +18,15 @@ export default function About() {
           <h2 className="font-heading text-3xl font-bold text-text sm:text-4xl">Prazer, sou Carla!</h2>
           <div className="flex max-w-2xl flex-col gap-4 text-base font-semibold leading-7 text-text">
             <p>
-              Sou apaixonada por hospitalidade e por criar espaços onde cada hóspede possa relaxar,
-              se sentir em casa e aproveitar o melhor da Chapada.
-              <br />
-              Estou sempre por perto para ajudar sua estadia a ser tranquila, confortável e
-              memorável do começo ao fim.
+              Minha história começou no movimento. Como educadora física, passei anos ao lado de
+              pessoas que queriam mudar de vida a partir do corpo — e aprendi ali que bem-estar
+              não é luxo, é decisão diária.
+            </p>
+            <p>
+              Foi buscando esse mesmo equilíbrio que encontrei a Chapada dos Veadeiros. Hoje eu
+              junto imóveis com propósito, assessoria de temporada e experiências para te ajudar a
+              construir uma vida que faça sentido: com realização pessoal, retorno financeiro e
+              conexão de verdade.
             </p>
           </div>
           <Link

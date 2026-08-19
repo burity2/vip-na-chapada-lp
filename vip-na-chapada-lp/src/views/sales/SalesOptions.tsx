@@ -305,10 +305,6 @@ export default function SalesOptions() {
   return (
     <section className="flex flex-col gap-8 p-6 text-text sm:px-12 lg:px-18">
       <div className="mx-auto flex min-w-full max-w-6xl flex-col gap-5 rounded-lg border border-border-soft bg-surface p-6 shadow-sm shadow-[var(--shadow)]">
-        <div className="flex flex-col gap-2">
-          <span className="text-xs font-bold uppercase tracking-wide text-primary">Vendas</span>
-          <h2 className="font-heading text-3xl font-bold text-text">Imóveis disponíveis</h2>
-        </div>
 
         <div className="flex flex-col gap-4">
           {salesHouses.map((house) => (

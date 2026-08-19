@@ -17,8 +17,8 @@ function Header() {
   const themeLabel = isDark ? 'Ativar tema claro' : 'Ativar tema escuro'
   const menuLabel = isMenuOpen ? 'Fechar menu' : 'Abrir menu'
   const navLinkClassName = ({ isActive }: { isActive: boolean }) => (
-    `rounded-md px-2 py-1 transition-colors hover:text-primary ${
-      isActive ? 'text-primary' : ''
+    `rounded-md px-2 py-1 transition-colors hover:text-accent ${
+      isActive ? 'text-accent' : ''
     }`
   )
 
@@ -27,7 +27,7 @@ function Header() {
       <div className="relative z-50 flex w-full items-center justify-between border-b border-border bg-header-bg px-6 py-4 text-text shadow-sm shadow-[var(--shadow)] transition-colors duration-300 sm:px-12 lg:px-18">
         <div>
           <Link
-            className="flex items-center gap-3 font-heading text-base font-bold tracking-[0.08em] text-primary transition-colors hover:text-accent"
+            className="flex items-center gap-3 font-heading text-base font-bold tracking-[0.08em] text-text transition-colors hover:text-accent"
             onClick={() => setIsMenuOpen(false)}
             to="/"
           >
@@ -53,7 +53,7 @@ function Header() {
         <div className="flex items-center gap-3">
           <button
             aria-label={themeLabel}
-            className="hidden size-11 place-items-center rounded-full border border-border bg-bg text-text shadow-sm shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:grid"
+            className="hidden size-11 place-items-center rounded-full border border-border bg-surface-2 text-text shadow-sm shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:grid"
             onClick={toggleTheme}
             title={themeLabel}
             type="button"
@@ -67,7 +67,7 @@ function Header() {
           <button
             aria-expanded={isMenuOpen}
             aria-label={menuLabel}
-            className="grid size-11 place-items-center rounded-full border border-border bg-bg text-primary shadow-sm shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:hidden"
+            className="grid size-11 place-items-center rounded-full border border-border bg-surface-2 text-text shadow-sm shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:hidden"
             onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
             title={menuLabel}
             type="button"
@@ -93,7 +93,7 @@ function Header() {
             <NavLink
               className={({ isActive }) => (
                 `rounded-lg px-3 py-3 transition-colors hover:bg-surface hover:text-primary ${
-                  isActive ? 'bg-surface text-primary' : ''
+                  isActive ? 'bg-surface text-accent' : ''
                 }`
               )}
               key={to}
