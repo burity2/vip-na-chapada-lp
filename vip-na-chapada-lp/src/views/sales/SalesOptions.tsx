@@ -16,6 +16,7 @@ import {
   IconUsers,
 } from '@tabler/icons-react'
 import { useLocation } from 'react-router'
+import { preloadImages } from '../../utils/preloadImages'
 import vipNoApEntranceImage from '../../assets/casas_aluguel/vip_no_ap/IMG_6319.webp'
 import vipNoApBathroomImage from '../../assets/casas_aluguel/vip_no_ap/IMG_6107.webp'
 import vipNoApGymImage from '../../assets/casas_aluguel/vip_no_ap/IMG_0176.webp'
@@ -40,6 +41,7 @@ import ap2ServiceAreaImage from '../../assets/casas_venda/ap_2/IMG_8873.webp'
 
 type SalesHouse = {
   id: string
+  listingUrl?: string
   tag: string
   name: string
   price: string
@@ -56,6 +58,7 @@ type SalesHouse = {
 const salesHouses: SalesHouse[] = [
   {
     id: 'apartamento-decorado',
+    listingUrl: 'https://www.netimoveis.com/imovel/apartamento-2-quartos-distrito-federal-brasilia-lago-norte/1184043',
     tag: 'Apartamento à venda',
     name: 'Apartamento decorado',
     price: 'Valor sob consulta',
@@ -123,6 +126,12 @@ function SalesHouseCard({ house, isExpanded, onToggle }: {
   const activeImage = house.gallery[activeImageIndex] ?? house.gallery[0]
 
   useEffect(() => {
+    if (isExpanded) {
+      preloadImages(house.gallery)
+    }
+  }, [house.gallery, isExpanded])
+
+  useEffect(() => {
     if (!isLightboxOpen) {
       return
     }
@@ -182,11 +191,13 @@ function SalesHouseCard({ house, isExpanded, onToggle }: {
       <button
         aria-expanded={isExpanded}
         className="grid w-full grid-cols-1 items-center gap-5 p-4 text-left transition-colors hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent md:grid-cols-[9rem_1fr_auto_auto]"
+        onFocus={() => preloadImages(house.gallery)}
+        onMouseEnter={() => preloadImages(house.gallery)}
         onClick={onToggle}
         type="button"
       >
         <div className="h-28 overflow-hidden rounded-md bg-bg-soft md:h-24">
-          <img alt={house.name} className="h-full w-full object-cover" src={house.cover} />
+          <img alt={house.name} className="h-full w-full object-cover" loading="eager" src={house.cover} />
         </div>
         <div className="flex min-w-0 flex-col gap-2">
           <span className="w-fit rounded-md bg-primary px-2.5 py-1 text-xs font-bold text-bg">
@@ -224,6 +235,8 @@ function SalesHouseCard({ house, isExpanded, onToggle }: {
               <img
                 alt={`${house.name} - foto ${activeImageIndex + 1}`}
                 className="h-full w-full object-cover"
+                fetchPriority="high"
+                loading="eager"
                 src={activeImage}
               />
               <button
@@ -268,6 +281,7 @@ function SalesHouseCard({ house, isExpanded, onToggle }: {
                       <img
                         alt={`${house.name} - miniatura ${index + 1}`}
                         className="h-full w-full object-cover"
+                        loading="eager"
                         src={picture}
                       />
                     </button>
@@ -314,7 +328,7 @@ function SalesHouseCard({ house, isExpanded, onToggle }: {
               </a>
               <a
                 className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-bold text-bg shadow-lg shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-                href={whatsappUrl}
+                href={house.listingUrl ?? whatsappUrl}
                 rel="noreferrer"
                 target="_blank"
               >
@@ -353,6 +367,8 @@ function SalesHouseCard({ house, isExpanded, onToggle }: {
               <img
                 alt={`${house.name} - foto ampliada ${activeImageIndex + 1}`}
                 className="max-h-full max-w-full object-contain"
+                fetchPriority="high"
+                loading="eager"
                 src={activeImage}
               />
               <button
@@ -389,6 +405,7 @@ function SalesHouseCard({ house, isExpanded, onToggle }: {
                     <img
                       alt={`${house.name} - miniatura ${index + 1}`}
                       className="h-full w-full object-cover"
+                      loading="eager"
                       src={picture}
                     />
                   </button>

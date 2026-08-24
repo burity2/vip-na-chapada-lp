@@ -1,4 +1,14 @@
 import { IconStarFilled } from '@tabler/icons-react'
+import anaPaolaAvatar from '../../assets/reviews/ana-paola.png'
+import andreAvatar from '../../assets/reviews/andre.png'
+import francoAvatar from '../../assets/reviews/franco.png'
+import horivalAvatar from '../../assets/reviews/horival.png'
+import humbertoAvatar from '../../assets/reviews/humberto.png'
+import joaoGomesAvatar from '../../assets/reviews/joao-gomes.png'
+import laraAvatar from '../../assets/reviews/lara.png'
+import mariaCarolinaAvatar from '../../assets/reviews/maria-carolina.png'
+import marioAvatar from '../../assets/reviews/mario.png'
+import renanAvatar from '../../assets/reviews/renan.png'
 
 type GuestReview = {
   guestName: string
@@ -9,32 +19,74 @@ type GuestReview = {
 
 const guestReviews: GuestReview[] = [
   {
-    guestName: 'Mariana S.',
-    date: 'Julho 2024',
+    guestName: 'Renan',
+    date: 'Agosto 2026',
     quote:
-      'A casa é linda, muito limpa e em uma localização perfeita. Nossa estadia foi tranquila do começo ao fim.',
-    avatarUrl: 'https://i.pravatar.cc/96?img=47',
+      'Lindo o lugar! A iluminação natural da casa fazia o despertar especial. Estrutura ótima para a proposta da viagem do nosso grupo.',
+    avatarUrl: renanAvatar,
   },
   {
-    guestName: 'Rafael M.',
-    date: 'Junho 2024',
+    guestName: 'Humberto',
+    date: 'Julho 2026',
     quote:
-      'A Carla foi uma anfitriã incrível. Respondeu rápido, ajudou em tudo e deixou nossa viagem muito mais leve.',
-    avatarUrl: 'https://i.pravatar.cc/96?img=12',
+      'Espaço confortável, reservado, de fácil acesso e com uma arquitetura interessante. Ótima comunicação com a proprietária.',
+    avatarUrl: humbertoAvatar,
   },
   {
-    guestName: 'Amanda R.',
-    date: 'Maio 2024',
+    guestName: 'Horival',
+    date: 'Julho 2026',
     quote:
-      'O lugar é ainda melhor que nas fotos. A vista, o conforto e o cuidado nos detalhes fizeram toda diferença.',
-    avatarUrl: 'https://i.pravatar.cc/96?img=32',
+      'Fizemos passeio em família e a residência nos atendeu muito bem. Check-in organizado, casa limpa e muito bem guarnecida.',
+    avatarUrl: horivalAvatar,
   },
   {
-    guestName: 'Lucas P.',
-    date: 'Abril 2024',
+    guestName: 'Andre',
+    date: 'Julho 2026',
     quote:
-      'Perfeito para descansar depois dos passeios. Tudo estava organizado, cheiroso e pronto para receber a gente.',
-    avatarUrl: 'https://i.pravatar.cc/96?img=59',
+      'Nossa estadia foi excelente e recomendamos a casa. A anfitriã foi sempre muito educada, atenciosa e prestativa.',
+    avatarUrl: andreAvatar,
+  },
+  {
+    guestName: 'Maria Carolina',
+    date: 'Julho 2026',
+    quote:
+      'A estadia foi excelente, aproveitamos muito a chapada! A casa é super confortável, limpa e bonita.',
+    avatarUrl: mariaCarolinaAvatar,
+  },
+  {
+    guestName: 'Lara',
+    date: 'Julho 2026',
+    quote:
+      'Nossa experiência foi excelente! Tudo estava de acordo com o anúncio. Casa perfeita, vista linda e todas as comodidades.',
+    avatarUrl: laraAvatar,
+  },
+  {
+    guestName: 'João Gomes',
+    date: 'Julho 2026',
+    quote:
+      'Nas nove diárias nos sentimos muito bem acolhidos, em um estúdio transado, bem decorado e aconchegante.',
+    avatarUrl: joaoGomesAvatar,
+  },
+  {
+    guestName: 'Ana Paola',
+    date: 'Julho 2026',
+    quote:
+      'Gostaria de agradecer à Carla. Desde a reserva até o último dia, se mostrou preocupada, atenciosa e prestativa.',
+    avatarUrl: anaPaolaAvatar,
+  },
+  {
+    guestName: 'Franco',
+    date: 'Março 2026',
+    quote:
+      'Apartamento impecável, aconchegante e bonito! Condomínio ótimo, bem seguro e com a praticidade do mercadinho 24h.',
+    avatarUrl: francoAvatar,
+  },
+  {
+    guestName: 'Mario',
+    date: 'Março 2026',
+    quote:
+      'Estadia muito boa! A anfitriã foi muito atenciosa e disponível para dúvidas, nos auxiliando na estadia com uma bebê.',
+    avatarUrl: marioAvatar,
   },
 ]
 

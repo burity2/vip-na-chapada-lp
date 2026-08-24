@@ -69,7 +69,7 @@ export default function Hero() {
             investir e viver com mais bem-estar.
           </p>
       </div>
-      <div className="flex flex-col gap-4 pt-8 sm:flex-row">
+      <div className="flex flex-col gap-4 pt-8 sm:flex-row items-center">
           <Link className={primaryButtonClassName} to="/vendas">
             <IconHomeDollar aria-hidden="true" size={24} stroke={1.8} />
             Comprar
