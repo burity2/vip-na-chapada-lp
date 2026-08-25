@@ -43,7 +43,8 @@ type RentHouse = {
   summary: string[]
   cover: string
   gallery: string[]
-  description: string
+  description: string[]
+  highlights?: string[]
   perfectFor: string
   location: string
   checkIn: string
@@ -71,8 +72,18 @@ const rentHouses: RentHouse[] = [
       vipNaChapadaNewImage3,
       vipNaChapadaNewImage4,
     ],
-    description:
-      'Uma estadia com arquitetura acolhedora, varanda aberta para a paisagem e espaços preparados para descansar depois dos passeios pela Chapada.',
+    description: [
+      'Essa não é uma construção comum. A casa é um diálogo harmônico entre cristais, madeiras e paisagem, onde cada material fala a linguagem do ambiente.',
+      'Aqui tudo respira com a Chapada. As linhas da construção acompanham a topografia, os cristais acendem naturalmente ao amanhecer e a arquitetura te leva de volta ao paraíso no entardecer.',
+      'No ofurô, a memória das águas geladas das cachoeiras encontra um banho quente e relaxante. As ervas aguçam outros sentidos e trazem você para uma experiência que é só sua.',
+      'Cada espaço foi desenhado para você se sentir parte daquele universo. Não como visitante, mas como quem pertence.',
+    ],
+    highlights: [
+      'Cristais e madeiras que contam a história geológica da Chapada',
+      'Ofurô com ritual sensorial: contraste e ervas',
+      'Arquitetura que conversa com o cerrado',
+      'Espaço pensado para quem quer estar lá de verdade',
+    ],
     perfectFor: 'Casais, famílias e temporadas de descanso',
     location: 'Chapada dos Veadeiros',
     checkIn: 'Check-in 15:00 · Check-out 11:00',
@@ -94,8 +105,18 @@ const rentHouses: RentHouse[] = [
       vipNoApBathroomImage,
       vipNoApEntranceImage,
     ],
-    description:
-      'Um apartamento prático e confortável, com estrutura de condomínio para quem quer uma base funcional e bem localizada durante a viagem.',
+    description: [
+      'Quando você entra, a madeira rústica de demolição conversa com a cômoda colorida que parece estar sorrindo. A energia do lugar não vem só da localização, mas da conexão que ele provoca.',
+      'Cada detalhe traz a imensidão da Chapada para perto. O colchão acolhe o corpo e promove o descanso de quem precisa desconectar mesmo estando na cidade.',
+      'Aqui você acorda em Brasília, mas acorda diferente. A leveza da natureza aparece nas cores, nos materiais e no ar que circula pelo espaço.',
+      'É um pedaço da trajetória entre Brasília e a Chapada que agora também pode ser seu. Um cantinho onde você se reconecta sem precisar sair de casa.',
+    ],
+    highlights: [
+      'Madeira rústica de demolição e cores que aquecem o ambiente',
+      'Descanso urbano com a leveza sensorial da Chapada',
+      'Espaço pensado para desconectar mesmo dentro da cidade',
+      'Cantinho de reconexão entre Brasília e natureza',
+    ],
     perfectFor: 'Casais, pequenas famílias e viagens urbanas',
     location: 'Condomínio com estrutura completa',
     checkIn: 'Check-in 14:00 · Check-out 11:00',
@@ -285,7 +306,22 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3">
               <h4 className="text-base font-bold text-text">Sobre esta casa</h4>
-              <p className="text-sm font-semibold leading-6 text-text">{house.description}</p>
+              <div className="flex flex-col gap-3">
+                {house.description.map((paragraph) => (
+                  <p className="text-sm font-semibold leading-6 text-text" key={paragraph}>
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              {house.highlights && (
+                <div className="mt-1 flex flex-col gap-2 border-t border-border-soft pt-4">
+                  {house.highlights.map((highlight) => (
+                    <p className="text-xs font-semibold leading-5 text-text-muted" key={highlight}>
+                      {highlight}
+                    </p>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="grid gap-6 rounded-lg border border-border-soft bg-surface-2 p-2 text-sm font-semibold text-text sm:p-4">

@@ -1,11 +1,9 @@
 import {
-  IconGrill,
+  IconBuildingEstate,
   IconHomeDollar,
   IconHomeHeart,
   IconKey,
-  IconMapPin,
-  IconStar,
-  IconUsersGroup,
+  IconWaveSine,
   type TablerIcon,
 } from "@tabler/icons-react"
 import type { CSSProperties } from 'react'
@@ -13,37 +11,27 @@ import { Link } from "react-router"
 import heroBackgroundImage from '../../assets/hero-home-dark-left.webp'
 import heroMobileBackgroundImage from '../../assets/hero-home-mobile-bottom-text.webp'
 
-type AboutCard = {
+type ServiceCard = {
   icon: TablerIcon;
   title: string;
   description: string;
 }
 
-const AboutHousingInfo: AboutCard[] = [
-  {
-    icon: IconMapPin,
-    title: 'Bem localizado',
-    description: 'Arredores bons, tranquilos e sempre pertinho.',
-  },
+const services: ServiceCard[] = [
   {
     icon: IconHomeHeart,
-    title: 'Aconchegante',
-    description: 'Preparado com carinho para você descansar bem.',
+    title: 'Aluguel por temporada',
+    description: 'Estadias preparadas com cuidado para acolher, surpreender e descansar bem.',
   },
   {
-    icon: IconStar,
-    title: 'Bem avaliado',
-    description: 'Hóspedes curtiram conforto, cuidado e experiência.',
+    icon: IconBuildingEstate,
+    title: 'Venda de imóveis',
+    description: 'Imóveis escolhidos para investir, morar e realizar planos com propósito.',
   },
   {
-    icon: IconGrill,
-    title: 'Completo',
-    description: 'Piscina, churrasqueira e lazer para aproveitar.',
-  },
-  {
-    icon: IconUsersGroup,
-    title: 'Todos bem-vindos',
-    description: 'Perfeito para reunir gente querida com conforto.',
+    icon: IconWaveSine,
+    title: 'Eventos e wellness',
+    description: 'Experiências na Chapada para reconectar corpo, ritmo e presença.',
   },
 ]
 
@@ -81,8 +69,8 @@ export default function Hero() {
       </div>
     </div>
     <section className="bg-bg px-4 py-2 text-text sm:px-12 lg:px-18">
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-4 pt-8 sm:grid-cols-2 lg:grid-cols-5">
-        {AboutHousingInfo.map(({ description, icon: Icon, title }) => (
+      <div className="relative z-10 mx-auto grid w-full max-w-5xl gap-4 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map(({ description, icon: Icon, title }) => (
           <article
             className="flex min-w-0 flex-col items-center gap-2.5 rounded-lg border border-border bg-surface p-5 text-center shadow-sm shadow-[var(--shadow)] transition-colors duration-300"
             key={title}

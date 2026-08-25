@@ -14,17 +14,17 @@ type HouseForSale = {
 const housesForSale: HouseForSale[] = [
   {
     detail: 'Apartamento à venda',
-    housePicture: ap2LivingImage,
-    houseName: 'Apartamento decorado',
-    houseInfo: ['Ambientes integrados', 'Cozinha planejada', 'Visitas agendadas'],
-    viewLink: '/vendas#apartamento-decorado',
+    housePicture: vipNoApImage,
+    houseName: 'Apartamento Vip Parque Norte',
+    houseInfo: ['Local certo para investir', 'Mobiliado e decorado', 'Pronto para morar ou alugar', 'Assessoria direta'],
+    viewLink: '/vendas#apartamento-na-asa-norte',
   },
   {
     detail: 'Apartamento à venda',
-    housePicture: vipNoApImage,
-    houseName: 'Apartamento na Asa Norte',
-    houseInfo: ['1 quarto', 'Condomínio completo', 'Boa localização'],
-    viewLink: '/vendas#apartamento-na-asa-norte',
+    housePicture: ap2LivingImage,
+    houseName: 'Apartamento CA Lago Norte',
+    houseInfo: ['Exclusividade e oportunidade', 'Pronto para morar', 'Excelente localização'],
+    viewLink: '/vendas#apartamento-decorado',
   },
 ]
 
