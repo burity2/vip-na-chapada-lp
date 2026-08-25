@@ -40,6 +40,8 @@ function HomeSaleCard({ detail, houseInfo, houseName, housePicture, viewLink }: 
           <img
             alt={houseName}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            decoding="async"
+            loading="lazy"
             src={housePicture}
           />
           <span className="absolute left-4 top-4 rounded-md bg-primary px-3 py-1.5 text-xs font-bold text-bg shadow-md shadow-[var(--shadow)]">

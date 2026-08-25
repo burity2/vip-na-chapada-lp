@@ -209,7 +209,7 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
         type="button"
       >
         <div className="h-28 overflow-hidden rounded-md bg-bg-soft md:h-24">
-          <img alt={house.name} className="h-full w-full object-cover" loading="eager" src={house.cover} />
+          <img alt={house.name} className="h-full w-full object-cover" decoding="async" loading="lazy" src={house.cover} />
         </div>
         <div className="flex min-w-0 flex-col gap-2">
           <span className="w-fit rounded-md bg-primary px-2.5 py-1 text-xs font-bold text-bg">
@@ -247,6 +247,7 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
               <img
                 alt={`${house.name} - foto ${activeImageIndex + 1}`}
                 className="h-full w-full object-cover"
+                decoding="async"
                 fetchPriority="high"
                 loading="eager"
                 src={activeImage}
@@ -293,7 +294,8 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
                       <img
                         alt={`${house.name} - miniatura ${index + 1}`}
                         className="h-full w-full object-cover"
-                        loading="eager"
+                        decoding="async"
+                        loading="lazy"
                         src={picture}
                       />
                     </button>
@@ -394,6 +396,7 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
               <img
                 alt={`${house.name} - foto ampliada ${activeImageIndex + 1}`}
                 className="max-h-full max-w-full object-contain"
+                decoding="async"
                 fetchPriority="high"
                 loading="eager"
                 src={activeImage}
@@ -432,7 +435,8 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
                     <img
                       alt={`${house.name} - miniatura ${index + 1}`}
                       className="h-full w-full object-cover"
-                      loading="eager"
+                      decoding="async"
+                      loading="lazy"
                       src={picture}
                     />
                   </button>
