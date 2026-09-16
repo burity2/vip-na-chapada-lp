@@ -12,10 +12,10 @@ import {
   IconMaximize,
   IconMapPin,
   IconShieldCheck,
-  IconX,
   IconUsers,
 } from '@tabler/icons-react'
 import { useLocation } from 'react-router'
+import ImageLightbox from '../../components/ImageLightbox'
 import { preloadImages } from '../../utils/preloadImages'
 import vipNaChapadaCoverImage from '../../assets/casas_aluguel/vip_na_chapada/01.webp'
 import vipNaChapadaDeckImage from '../../assets/casas_aluguel/vip_na_chapada/IMG_2302.webp'
@@ -142,30 +142,6 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
       preloadImages(house.gallery)
     }
   }, [house.gallery, isExpanded])
-
-  useEffect(() => {
-    if (!isLightboxOpen) {
-      return
-    }
-
-    const previousBodyOverflow = document.body.style.overflow
-    const previousDocumentOverflow = document.documentElement.style.overflow
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
-        setIsLightboxOpen(false)
-      }
-    }
-
-    document.body.style.overflow = 'hidden'
-    document.documentElement.style.overflow = 'hidden'
-    document.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.body.style.overflow = previousBodyOverflow
-      document.documentElement.style.overflow = previousDocumentOverflow
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [isLightboxOpen])
 
   useEffect(() => {
     if (!hasMountedRef.current) {
@@ -369,83 +345,15 @@ function RentHouseCard({ house, isExpanded, onToggle }: {
         </div>
       )}
 
-      {isLightboxOpen && (
-        <div
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex touch-none items-center justify-center overflow-hidden bg-black/90 p-2 backdrop-blur-sm md:p-4"
-          onClick={() => setIsLightboxOpen(false)}
-          onTouchMove={(event) => event.preventDefault()}
-          onWheel={(event) => event.preventDefault()}
-          role="dialog"
-        >
-          <div
-            className="relative flex h-[calc(100dvh-1rem)] w-full max-w-6xl flex-col gap-3 md:h-full md:max-h-[92vh]"
-            onClick={(event) => event.stopPropagation()}
-            onTouchMove={(event) => event.stopPropagation()}
-            onWheel={(event) => event.stopPropagation()}
-          >
-            <button
-              aria-label="Fechar galeria ampliada"
-              className="absolute right-2 top-2 z-30 grid size-9 place-items-center rounded-full bg-surface/90 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-3 sm:top-3 sm:size-11"
-              onClick={() => setIsLightboxOpen(false)}
-              type="button"
-            >
-              <IconX aria-hidden="true" className="size-5 sm:size-[22px]" stroke={1.8} />
-            </button>
-            <div className="group/lightbox relative flex min-h-0 flex-1 items-center justify-center overflow-hidden rounded-lg bg-black">
-              <img
-                alt={`${house.name} - foto ampliada ${activeImageIndex + 1}`}
-                className="max-h-full max-w-full object-contain"
-                decoding="async"
-                fetchPriority="high"
-                loading="eager"
-                src={activeImage}
-              />
-              <button
-                aria-label="Imagem anterior"
-                className="absolute left-2 top-1/2 z-20 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-surface/90 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:left-5 sm:size-11"
-                onClick={showPreviousImage}
-                type="button"
-              >
-                <IconChevronLeft aria-hidden="true" className="size-5 sm:size-6" stroke={1.8} />
-              </button>
-              <button
-                aria-label="Próxima imagem"
-                className="absolute right-2 top-1/2 z-20 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-surface/90 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-5 sm:size-11"
-                onClick={showNextImage}
-                type="button"
-              >
-                <IconChevronRight aria-hidden="true" className="size-5 sm:size-6" stroke={1.8} />
-              </button>
-            </div>
-            <div className="hidden rounded-lg bg-black/70 p-3 backdrop-blur-sm md:block">
-              <div className="flex gap-2 overflow-x-auto pb-1">
-                {house.gallery.map((picture, index) => (
-                  <button
-                    aria-label={`Mostrar foto ${index + 1} de ${house.name}`}
-                    className={`h-16 w-24 shrink-0 overflow-hidden rounded-md border bg-bg-soft transition-all duration-300 hover:border-primary-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
-                      index === activeImageIndex
-                        ? 'border-accent opacity-100'
-                        : 'border-white/35 opacity-80 hover:opacity-100'
-                    }`}
-                    key={`${house.id}-lightbox-${picture}`}
-                    onClick={() => setActiveImageIndex(index)}
-                    type="button"
-                  >
-                    <img
-                      alt={`${house.name} - miniatura ${index + 1}`}
-                      className="h-full w-full object-cover"
-                      decoding="async"
-                      loading="lazy"
-                      src={picture}
-                    />
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <ImageLightbox
+        activeIndex={activeImageIndex}
+        images={house.gallery}
+        isOpen={isLightboxOpen}
+        key={`${house.id}-${isLightboxOpen ? activeImageIndex : 'closed'}`}
+        onActiveIndexChange={setActiveImageIndex}
+        onClose={() => setIsLightboxOpen(false)}
+        title={house.name}
+      />
     </article>
   )
 }

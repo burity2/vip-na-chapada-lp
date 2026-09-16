@@ -12,10 +12,10 @@ import {
   IconMaximize,
   IconMapPin,
   IconShieldCheck,
-  IconX,
   IconUsers,
 } from '@tabler/icons-react'
 import { useLocation } from 'react-router'
+import ImageLightbox from '../../components/ImageLightbox'
 import { preloadImages } from '../../utils/preloadImages'
 import vipNoApEntranceImage from '../../assets/casas_aluguel/vip_no_ap/IMG_6319.webp'
 import vipNoApBathroomImage from '../../assets/casas_aluguel/vip_no_ap/IMG_6107.webp'
@@ -38,6 +38,45 @@ import ap2SuiteImage from '../../assets/casas_venda/ap_2/IMG_8856.webp'
 import ap2HallImage from '../../assets/casas_venda/ap_2/IMG_8865.webp'
 import ap2EntryImage from '../../assets/casas_venda/ap_2/IMG_8867.webp'
 import ap2ServiceAreaImage from '../../assets/casas_venda/ap_2/IMG_8873.webp'
+import ap3FacadeImage from '../../assets/casas_venda/ap_3/optimized/IMG_3125.webp'
+import ap3BathroomImage from '../../assets/casas_venda/ap_3/optimized/IMG_3145.webp'
+import ap3KitchenImage from '../../assets/casas_venda/ap_3/optimized/IMG_3148.webp'
+import ap3LaundryImage from '../../assets/casas_venda/ap_3/optimized/IMG_3149.webp'
+import ap3KitchenWideImage from '../../assets/casas_venda/ap_3/optimized/IMG_3150.webp'
+import ap3LivingImage from '../../assets/casas_venda/ap_3/optimized/IMG_3155.webp'
+import ap3OfficeImage from '../../assets/casas_venda/ap_3/optimized/IMG_3168.webp'
+import ap3HallImage from '../../assets/casas_venda/ap_3/optimized/IMG_3169.webp'
+import ap3SingleBedroomImage from '../../assets/casas_venda/ap_3/optimized/IMG_3171.webp'
+import ap3BedroomImage from '../../assets/casas_venda/ap_3/optimized/IMG_3180.webp'
+import ap3BedroomWideImage from '../../assets/casas_venda/ap_3/optimized/IMG_3183.webp'
+import ap3BalconyImage from '../../assets/casas_venda/ap_3/optimized/IMG_3194.webp'
+import ap3BalconyViewImage from '../../assets/casas_venda/ap_3/optimized/IMG_3196.webp'
+import ap3WorkViewImage from '../../assets/casas_venda/ap_3/optimized/IMG_3199.webp'
+import casa1BathroomImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-44(1).webp'
+import casa1DeckImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-44(2).webp'
+import casa1PoolViewImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-44(3).webp'
+import casa1VerandaViewImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-44(4).webp'
+import casa1BedroomViewImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-44(5).webp'
+import casa1DiningImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-44(6).webp'
+import casa1BathroomWideImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-44.webp'
+import casa1BedroomImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-48.webp'
+import casa1KitchenImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-49(1).webp'
+import casa1BedroomWindowImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-49(2).webp'
+import casa1LivingImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-49(3).webp'
+import casa1KitchenWideImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-49(4).webp'
+import casa1LivingWideImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-49(5).webp'
+import casa1DiningWideImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-49(6).webp'
+import casa1TvRoomImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-49(7).webp'
+import casa1SecondBedroomImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-49.webp'
+import casa1PoolImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-52(1).webp'
+import casa1ExteriorImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-52(2).webp'
+import casa1ExteriorWideImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-52.webp'
+import lote1AerialWideImage from '../../assets/casas_venda/lote_1/PHOTO-2026-09-11-16-01-23(3).webp'
+import lote1AerialValleyImage from '../../assets/casas_venda/lote_1/PHOTO-2026-09-11-16-01-23(5).webp'
+import lote1AccessImage from '../../assets/casas_venda/lote_1/PHOTO-2026-09-11-16-01-23(7).webp'
+import lote1AerialHouseImage from '../../assets/casas_venda/lote_1/PHOTO-2026-09-11-16-01-23(8).webp'
+import lote1AerialHillsImage from '../../assets/casas_venda/lote_1/PHOTO-2026-09-11-16-01-23(9).webp'
+import lote1MapImage from '../../assets/casas_venda/lote_1/PHOTO-2026-09-11-16-01-23(16).webp'
 
 type SalesHouse = {
   id: string
@@ -45,6 +84,7 @@ type SalesHouse = {
   tag: string
   name: string
   price: string
+  isSold?: boolean
   summary: string[]
   cover: string
   gallery: string[]
@@ -57,11 +97,124 @@ type SalesHouse = {
 
 const salesHouses: SalesHouse[] = [
   {
+    id: 'apartamento-na-asa-norte',
+    tag: 'Apartamento à venda',
+    name: 'Apartamento Vip Parque Norte',
+    price: 'Valor sob consulta',
+    summary: ['1 quarto', '1 banheiro', 'Condomínio completo'],
+    cover: vipNoApBedroomImage,
+    gallery: [
+      vipNoApBedroomImage,
+      vipNoApGymImage,
+      vipNoApMarketImage,
+      vipNoApBuildingImage,
+      vipNoApBathroomImage,
+      vipNoApEntranceImage,
+    ],
+    description:
+      'Apartamento decorado, confortável e bem localizado na Asa Norte, com estrutura de condomínio para morar bem ou investir em locação.',
+    perfectFor: 'Moradia, investimento e renda com locação',
+    location: 'Asa Norte, Brasília',
+    checkIn: 'Visitas sob agendamento',
+    rules: 'Detalhes de venda sob consulta',
+  },
+  {
+    id: 'lote-alto-paraiso',
+    listingUrl: 'https://www.netimoveis.com/imovel/lote-area-terreno-goias-alto-paraiso-de-goias-nucleo-rural/1199639',
+    tag: 'Terreno à venda',
+    name: 'Lote em Alto Paraíso',
+    price: 'Valor sob consulta',
+    summary: ['Área rural', 'Cerrado preservado', 'Potencial de construção'],
+    cover: lote1AerialWideImage,
+    gallery: [
+      lote1AerialWideImage,
+      lote1AerialHouseImage,
+      lote1AerialHillsImage,
+      lote1AerialValleyImage,
+      lote1AccessImage,
+      lote1MapImage,
+    ],
+    description:
+      'Terreno em região rural de Alto Paraíso de Goiás, pensado para quem busca natureza, silêncio e potencial para um projeto conectado à Chapada.',
+    perfectFor: 'Investimento, refúgio e projeto autoral',
+    location: 'Núcleo Rural, Alto Paraíso de Goiás',
+    checkIn: 'Visitas sob agendamento',
+    rules: 'Detalhes de venda sob consulta',
+  },
+  {
+    id: 'casa-condominio-alto-paraiso',
+    listingUrl: 'https://www.netimoveis.com/imovel/casa-em-condominio-goias-alto-paraiso-de-goias-nucleo-rural/1186143',
+    tag: 'Casa à venda',
+    name: 'Casa em Condomínio Alto Paraíso',
+    price: 'Valor sob consulta',
+    summary: ['Casa em condomínio', 'Natureza por perto', 'Arquitetura acolhedora'],
+    cover: casa1ExteriorImage,
+    gallery: [
+      casa1ExteriorImage,
+      casa1ExteriorWideImage,
+      casa1PoolImage,
+      casa1PoolViewImage,
+      casa1VerandaViewImage,
+      casa1DeckImage,
+      casa1DiningImage,
+      casa1DiningWideImage,
+      casa1KitchenImage,
+      casa1KitchenWideImage,
+      casa1LivingImage,
+      casa1LivingWideImage,
+      casa1TvRoomImage,
+      casa1BedroomImage,
+      casa1BedroomViewImage,
+      casa1BedroomWindowImage,
+      casa1SecondBedroomImage,
+      casa1BathroomImage,
+      casa1BathroomWideImage,
+    ],
+    description:
+      'Casa em condomínio na região de Alto Paraíso, com proposta de refúgio, privacidade e convivência com o cerrado em uma rotina mais leve.',
+    perfectFor: 'Moradia, descanso e investimento na Chapada',
+    location: 'Núcleo Rural, Alto Paraíso de Goiás',
+    checkIn: 'Visitas sob agendamento',
+    rules: 'Detalhes de venda sob consulta',
+  },
+  {
+    id: 'apartamento-ca-lago-norte-2',
+    listingUrl: 'https://www.netimoveis.com/imovel/apartamento-2-quartos-distrito-federal-brasilia-lago-norte/1199989',
+    tag: 'Apartamento à venda',
+    name: 'Apartamento CA Lago Norte',
+    price: 'Valor sob consulta',
+    summary: ['2 quartos', 'Lago Norte', 'Pronto para visitar'],
+    cover: ap3FacadeImage,
+    gallery: [
+      ap3FacadeImage,
+      ap3BathroomImage,
+      ap3KitchenImage,
+      ap3LaundryImage,
+      ap3KitchenWideImage,
+      ap3LivingImage,
+      ap3OfficeImage,
+      ap3HallImage,
+      ap3SingleBedroomImage,
+      ap3BedroomImage,
+      ap3BedroomWideImage,
+      ap3BalconyImage,
+      ap3BalconyViewImage,
+      ap3WorkViewImage,
+    ],
+    description:
+      'Apartamento no CA do Lago Norte com planta prática, ambientes bem aproveitados e fotos completas para avaliar a visita com calma.',
+    perfectFor: 'Moradia, investimento e visitas agendadas',
+    location: 'CA Lago Norte, Brasília',
+    checkIn: 'Visitas sob agendamento',
+    rules: 'Detalhes de venda sob consulta',
+  },
+  {
     id: 'apartamento-decorado',
     listingUrl: 'https://www.netimoveis.com/imovel/apartamento-2-quartos-distrito-federal-brasilia-lago-norte/1184043',
     tag: 'Apartamento à venda',
-    name: 'Apartamento decorado',
-    price: 'Valor sob consulta',
+    name: 'Apartamento CA Lago Norte',
+    price: 'Vendido',
+    isSold: true,
     summary: ['Detalhes sob consulta', 'Ambientes integrados', 'Cozinha planejada'],
     cover: ap2LivingImage,
     gallery: [
@@ -82,31 +235,9 @@ const salesHouses: SalesHouse[] = [
       ap2DroneImage,
     ],
     description:
-      'Apartamento com ambientes bem distribuídos, marcenaria planejada, cozinha equipada e fotos completas para avaliar cada detalhe antes da visita.',
+      'Este imóvel foi vendido. Apartamento com ambientes bem distribuídos, marcenaria planejada, cozinha equipada e fotos completas para referência.',
     perfectFor: 'Moradia, investimento e visitas agendadas',
     location: 'Localização sob consulta',
-    checkIn: 'Visitas sob agendamento',
-    rules: 'Detalhes de venda sob consulta',
-  },
-  {
-    id: 'apartamento-na-asa-norte',
-    tag: 'Apartamento à venda',
-    name: 'Apartamento na Asa Norte',
-    price: 'Valor sob consulta',
-    summary: ['1 quarto', '1 banheiro', 'Condomínio completo'],
-    cover: vipNoApBedroomImage,
-    gallery: [
-      vipNoApBedroomImage,
-      vipNoApGymImage,
-      vipNoApMarketImage,
-      vipNoApBuildingImage,
-      vipNoApBathroomImage,
-      vipNoApEntranceImage,
-    ],
-    description:
-      'Apartamento decorado, confortável e bem localizado na Asa Norte, com estrutura de condomínio para morar bem ou investir em locação.',
-    perfectFor: 'Moradia, investimento e renda com locação',
-    location: 'Asa Norte, Brasília',
     checkIn: 'Visitas sob agendamento',
     rules: 'Detalhes de venda sob consulta',
   },
@@ -130,30 +261,6 @@ function SalesHouseCard({ house, isExpanded, onToggle }: {
       preloadImages(house.gallery)
     }
   }, [house.gallery, isExpanded])
-
-  useEffect(() => {
-    if (!isLightboxOpen) {
-      return
-    }
-
-    const previousBodyOverflow = document.body.style.overflow
-    const previousDocumentOverflow = document.documentElement.style.overflow
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
-        setIsLightboxOpen(false)
-      }
-    }
-
-    document.body.style.overflow = 'hidden'
-    document.documentElement.style.overflow = 'hidden'
-    document.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.body.style.overflow = previousBodyOverflow
-      document.documentElement.style.overflow = previousDocumentOverflow
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [isLightboxOpen])
 
   useEffect(() => {
     if (!hasMountedRef.current) {
@@ -196,13 +303,26 @@ function SalesHouseCard({ house, isExpanded, onToggle }: {
         onClick={onToggle}
         type="button"
       >
-        <div className="h-28 overflow-hidden rounded-md bg-bg-soft md:h-24">
-          <img alt={house.name} className="h-full w-full object-cover" decoding="async" loading="lazy" src={house.cover} />
+        <div className="relative h-28 overflow-hidden rounded-md bg-bg-soft md:h-24">
+          <img
+            alt={house.name}
+            className={`h-full w-full object-cover ${house.isSold ? 'grayscale' : ''}`}
+            decoding="async"
+            loading="lazy"
+            src={house.cover}
+          />
+          {house.isSold && (
+            <span className="absolute right-2 top-2 rounded-md bg-accent px-2 py-1 text-[0.68rem] font-bold uppercase tracking-wide text-bg shadow-md shadow-[var(--shadow)]">
+              Vendido
+            </span>
+          )}
         </div>
         <div className="flex min-w-0 flex-col gap-2">
-          <span className="w-fit rounded-md bg-primary px-2.5 py-1 text-xs font-bold text-bg">
-            {house.tag}
-          </span>
+          {!house.isSold && (
+            <span className="w-fit rounded-md bg-primary px-2.5 py-1 text-xs font-bold text-bg">
+              {house.tag}
+            </span>
+          )}
           <h3 className="font-heading text-2xl font-bold text-text">{house.name}</h3>
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm font-semibold text-text">
             <span className="inline-flex items-center gap-1.5">
@@ -342,83 +462,15 @@ function SalesHouseCard({ house, isExpanded, onToggle }: {
         </div>
       )}
 
-      {isLightboxOpen && (
-        <div
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex touch-none items-center justify-center overflow-hidden bg-black/90 p-2 backdrop-blur-sm md:p-4"
-          onClick={() => setIsLightboxOpen(false)}
-          onTouchMove={(event) => event.preventDefault()}
-          onWheel={(event) => event.preventDefault()}
-          role="dialog"
-        >
-          <div
-            className="relative flex h-[calc(100dvh-1rem)] w-full max-w-6xl flex-col gap-3 md:h-full md:max-h-[92vh]"
-            onClick={(event) => event.stopPropagation()}
-            onTouchMove={(event) => event.stopPropagation()}
-            onWheel={(event) => event.stopPropagation()}
-          >
-            <button
-              aria-label="Fechar galeria ampliada"
-              className="absolute right-2 top-2 z-30 grid size-9 place-items-center rounded-full bg-surface/90 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-3 sm:top-3 sm:size-11"
-              onClick={() => setIsLightboxOpen(false)}
-              type="button"
-            >
-              <IconX aria-hidden="true" className="size-5 sm:size-[22px]" stroke={1.8} />
-            </button>
-            <div className="group/lightbox relative flex min-h-0 flex-1 items-center justify-center overflow-hidden rounded-lg bg-black">
-              <img
-                alt={`${house.name} - foto ampliada ${activeImageIndex + 1}`}
-                className="max-h-full max-w-full object-contain"
-                decoding="async"
-                fetchPriority="high"
-                loading="eager"
-                src={activeImage}
-              />
-              <button
-                aria-label="Imagem anterior"
-                className="absolute left-2 top-1/2 z-20 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-surface/90 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:left-5 sm:size-11"
-                onClick={showPreviousImage}
-                type="button"
-              >
-                <IconChevronLeft aria-hidden="true" className="size-5 sm:size-6" stroke={1.8} />
-              </button>
-              <button
-                aria-label="Próxima imagem"
-                className="absolute right-2 top-1/2 z-20 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-surface/90 text-primary shadow-md shadow-[var(--shadow)] transition-all duration-300 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-5 sm:size-11"
-                onClick={showNextImage}
-                type="button"
-              >
-                <IconChevronRight aria-hidden="true" className="size-5 sm:size-6" stroke={1.8} />
-              </button>
-            </div>
-            <div className="hidden rounded-lg bg-black/70 p-3 backdrop-blur-sm md:block">
-              <div className="flex gap-2 overflow-x-auto pb-1">
-                {house.gallery.map((picture, index) => (
-                  <button
-                    aria-label={`Mostrar foto ${index + 1} de ${house.name}`}
-                    className={`h-16 w-24 shrink-0 overflow-hidden rounded-md border bg-bg-soft transition-all duration-300 hover:border-primary-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
-                      index === activeImageIndex
-                        ? 'border-accent opacity-100'
-                        : 'border-white/35 opacity-80 hover:opacity-100'
-                    }`}
-                    key={`${house.id}-lightbox-${picture}`}
-                    onClick={() => setActiveImageIndex(index)}
-                    type="button"
-                  >
-                    <img
-                      alt={`${house.name} - miniatura ${index + 1}`}
-                      className="h-full w-full object-cover"
-                      decoding="async"
-                      loading="lazy"
-                      src={picture}
-                    />
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <ImageLightbox
+        activeIndex={activeImageIndex}
+        images={house.gallery}
+        isOpen={isLightboxOpen}
+        key={`${house.id}-${isLightboxOpen ? activeImageIndex : 'closed'}`}
+        onActiveIndexChange={setActiveImageIndex}
+        onClose={() => setIsLightboxOpen(false)}
+        title={house.name}
+      />
     </article>
   )
 }

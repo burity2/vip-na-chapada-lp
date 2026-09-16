@@ -2,12 +2,16 @@ import { IconArrowRight } from '@tabler/icons-react'
 import { Link } from 'react-router'
 import vipNoApImage from '../../assets/casas_aluguel/vip_no_ap/IMG_6326.webp'
 import ap2LivingImage from '../../assets/casas_venda/ap_2/IMG_8820.webp'
+import ap3FacadeImage from '../../assets/casas_venda/ap_3/optimized/IMG_3125.webp'
+import casa1ExteriorImage from '../../assets/casas_venda/casa_1/PHOTO-2026-06-15-08-56-52(2).webp'
+import lote1AerialWideImage from '../../assets/casas_venda/lote_1/PHOTO-2026-09-11-16-01-23(3).webp'
 
 type HouseForSale = {
   detail: string
   housePicture: string
   houseName: string
   houseInfo: string[]
+  isSold?: boolean
   viewLink: string
 }
 
@@ -20,15 +24,37 @@ const housesForSale: HouseForSale[] = [
     viewLink: '/vendas#apartamento-na-asa-norte',
   },
   {
+    detail: 'Terreno à venda',
+    housePicture: lote1AerialWideImage,
+    houseName: 'Lote em Alto Paraíso',
+    houseInfo: ['Área rural', 'Cerrado preservado', 'Potencial de construção'],
+    viewLink: '/vendas#lote-alto-paraiso',
+  },
+  {
+    detail: 'Casa à venda',
+    housePicture: casa1ExteriorImage,
+    houseName: 'Casa em Condomínio Alto Paraíso',
+    houseInfo: ['Casa em condomínio', 'Natureza por perto', 'Arquitetura acolhedora'],
+    viewLink: '/vendas#casa-condominio-alto-paraiso',
+  },
+  {
+    detail: 'Apartamento à venda',
+    housePicture: ap3FacadeImage,
+    houseName: 'Apartamento CA Lago Norte',
+    houseInfo: ['2 quartos', 'Lago Norte', 'Pronto para visitar'],
+    viewLink: '/vendas#apartamento-ca-lago-norte-2',
+  },
+  {
     detail: 'Apartamento à venda',
     housePicture: ap2LivingImage,
     houseName: 'Apartamento CA Lago Norte',
     houseInfo: ['Exclusividade e oportunidade', 'Pronto para morar', 'Excelente localização'],
+    isSold: true,
     viewLink: '/vendas#apartamento-decorado',
   },
 ]
 
-function HomeSaleCard({ detail, houseInfo, houseName, housePicture, viewLink }: HouseForSale) {
+function HomeSaleCard({ detail, houseInfo, houseName, housePicture, isSold, viewLink }: HouseForSale) {
   return (
     <Link
       aria-label={`Ver detalhes de ${houseName}`}
@@ -39,14 +65,22 @@ function HomeSaleCard({ detail, houseInfo, houseName, housePicture, viewLink }: 
         <div className="relative h-52 overflow-hidden bg-bg-soft">
           <img
             alt={houseName}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+              isSold ? 'grayscale' : ''
+            }`}
             decoding="async"
             loading="lazy"
             src={housePicture}
           />
-          <span className="absolute left-4 top-4 rounded-md bg-primary px-3 py-1.5 text-xs font-bold text-bg shadow-md shadow-[var(--shadow)]">
-            {detail}
-          </span>
+          {isSold ? (
+            <span className="absolute right-4 top-4 rounded-md bg-accent px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-bg shadow-md shadow-[var(--shadow)]">
+              Vendido
+            </span>
+          ) : (
+            <span className="absolute left-4 top-4 rounded-md bg-primary px-3 py-1.5 text-xs font-bold text-bg shadow-md shadow-[var(--shadow)]">
+              {detail}
+            </span>
+          )}
         </div>
         <div className="flex flex-1 flex-col gap-4 p-5">
           <div className="flex flex-col gap-2.5 space-y-2">
